@@ -12,7 +12,9 @@ There are currently two PDE approaches implemented for computing the (linear) re
 
 1. **Poisson equation (equilibrium method):** The linear response $\rho$ of some observable $f$ can be computed as 
 
-$$ \rho = \langle \phi, f\rangle_{L^2(\mu)} = \int_\mathcal{X} \phi f \, d\mu,$$
+```math
+\rho = \langle \phi, f\rangle_{L^2(\mu)} = \int_\mathcal{X} \phi f \, d\mu,
+```
 
 with $\phi$ the solution to the Poisson equation $-\mathcal{L}\phi = f$.
 
