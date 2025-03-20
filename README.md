@@ -20,7 +20,6 @@ Due to being an equilibrium-based approach, this method is restricted to linear 
 
 2. **Fokker-Planck (nonequilibrium method):** Alternatively, $\rho$ can be computed by solving for the nonequilibrium invariant measure $\mu_\eta$ directly:
 
-```
 ```math 
 \rho = \lim_{\eta\to 0} \frac{1}{\eta}E_\eta(R) = \lim_{\eta\to 0} \frac{1}{\eta}\int_\mathcal{X} f \, d\mu_\eta,
 ```
