@@ -9,7 +9,7 @@ using LangevinLR.Ovd2D
     2) Instantiate `Params`, which contains simulation parameters
     3) Discretize operator. There are 2 options here:
         3a) Solve Poisson equation -Lϕ = f, with L the generator of the dynamics
-            (so linear response = <ϕ,f> = ∫_Ω ϕf ψ_0, with ψ_0 the gibbs distribution)[^1]
+            (so linear response = <ϕ,f> = ∫_X ϕf ψ_0, with ψ_0 the gibbs distribution)[^1]
         3b) Solve Fokker-Planck L^† ψ_η = 0 for the nonequilibrium invariant measure ψ_\eta,
                 with L^† the L^2(Ω)-adjoint of L
             (so linear response = \lim_{η→0} 1/η \int_Ω f ψ_η)
@@ -38,7 +38,6 @@ force() = force(0.0)
 function main()
     ##### Parameters
     #=
-        - potential V (and derivatives) defined in `potential_ovd2D.jl` inside `create_potential()`
         - `vars` holds general simulation parameters. Initialize it with:
             `L`: length of the domain [0, L] (depends on choice of potential `V`)
             `m`: number of discretization points per dimension
@@ -74,21 +73,21 @@ function main()
     ϕ, err_poisson = linear_solver(L_poisson, vcat(f...))
 
     ### Computing the mobility with Poisson solution
-    # linear response given by <ϕ,f> = ∫_Ω ϕf ψ_0 
+    # linear response given by <ϕ,f> = ∫_X ϕf ψ_0 
     ψ_0 = vars.gibbs.(vars.Q1, vars.Q2) # discrete Gibbs distribution of size m by m
     lr_poisson = vars.h^2*sum(ϕ.*f.*ψ_0) # quadrature yields linear response
 
     ##### Example 2: Solving Fokker-Planck equation L^† ψ_η = 0 ----------------------------
     #=
         - get discretized generator `L^†` from `get_stencil(vars, FokkerPlanck(), η)`
-            (if η not passed, it's treated as 0, so make sure to specify η here)
+      ``      (if η not passed, it's treated as 0, so make sure to specify η here)
         - `x = spectral_solver(A, vars)` solves for x in Ax = 0
     =#
     L_FP = get_stencil(vars, FokkerPlanck(), η)
     ψ_η, err_FP = spectral_solver(L_FP, vars)
 
     ### Computing the mobility with Fokker-Planck
-    # linear response given by 1/η \int_Ω f ψ_η
+    # linear response given by 1/η \int_X f ψ_η
     lr_FP = vars.h^2*sum(f.*ψ_η)/η 
 
     @printf("Poisson residual = %.4g \n", err_poisson)
