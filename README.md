@@ -22,8 +22,7 @@ Due to being an equilibrium-based approach, this method is restricted to linear 
 
 ```
 ```math 
-\rho = \lim_{\eta\to 0} \frac{1}{\eta}\mathbb{E}_\eta(R) = \lim_{\eta\to 0} \frac{1}{\eta}\int_\mathcal{X} f \, d\mu_\eta,
-```
+\rho = \lim_{\eta\to 0} \frac{1}{\eta}E_\eta(R) = \lim_{\eta\to 0} \frac{1}{\eta}\int_\mathcal{X} f \, d\mu_\eta,
 ```
 
 with $\mu_\eta$ the solution to the stationary Fokker-Planck equation $\mathcal{L}^\dagger\mu_\eta = 0$. More generally, this method allows for computing the full nonlinear response profile $\mathbb{E}_\eta(R)$ for arbitrary values of $\eta$.
