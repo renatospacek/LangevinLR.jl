@@ -34,6 +34,6 @@ See `example_ovd2D.jl` for an example of both implementations with a detailed st
 
 To install `LangevinLR`, add it directly from source in the Pkg REPL:
 
-```julia
-pkg> add https://github.com/renatospacek/LangevinLR.jl
+```bash
+] add https://github.com/renatospacek/LangevinLR.jl
 ```
