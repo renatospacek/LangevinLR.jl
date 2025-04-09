@@ -1,5 +1,6 @@
 module Ovd2D
 
+using StaticArrays
 using Cubature
 using JLLWrappers
 using ForwardDiff
@@ -10,14 +11,12 @@ using SparseArrays
 using Statistics
 using IterativeSolvers
 
-abstract type Operator end
-struct FokkerPlanck <: Operator end
-struct Poisson <: Operator end
+using ..Common: Operator, FokkerPlanck, Poisson, meshgrid
+export Operator, FokkerPlanck, Poisson, meshgrid
 
 include("utils_ovd2D.jl")
 include("stencil_ovd2D.jl")
 
-export Operator, FokkerPlanck, Poisson
 export Params, linear_solver, spectral_solver
 export get_stencil
 

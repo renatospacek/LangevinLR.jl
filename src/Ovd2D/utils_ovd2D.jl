@@ -35,7 +35,7 @@ Struct for general parameters
 
         d₁V, d₂V, ΔV = diff_potential(V)
         gibbs = _get_gibbs(V, L, β)
-        
+
         new(L, m, h, q, Q1', Q2', β, V, d₁V, d₂V, ΔV, force, gibbs)
     end
 end
