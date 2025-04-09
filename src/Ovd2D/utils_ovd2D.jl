@@ -1,11 +1,4 @@
 # TODO generalize domains; currently only of the form [0,L)
-"Construct 2D meshgrid"
-function meshgrid(x, y)
-    X = x' .* ones(length(y))
-    Y = ones(length(x))' .* y
-
-    return X, Y
-end
 
 """
 Struct for general parameters
