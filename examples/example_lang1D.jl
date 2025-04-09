@@ -1,7 +1,6 @@
 using Plots
 using Printf
 using LangevinLR.Lang1D
-plotlyjs()
 
 V(x) = (1.0 - cos(x)) / 2.0
 
@@ -10,8 +9,8 @@ force() = force(0.0)
 
 # ==========================================================================================
 function main()
-    mq = 101
-    mp = 100
+    mq = 51
+    mp = 200
     Lp = 5.0
     vars = Params(Lp, mq, mp, 1.0, 1.0, V, force)
     η = 0.1

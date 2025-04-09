@@ -1,8 +1,6 @@
-using Revise
 using Plots
 using Printf
 using LangevinLR.Ovd1D
-plotlyjs()
 
 V(x) = (1.0 - cos(x)) / 2.0
 
