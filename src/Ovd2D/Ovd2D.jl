@@ -1,6 +1,5 @@
 module Ovd2D
 
-using StaticArrays
 using Cubature
 using JLLWrappers
 using ForwardDiff
